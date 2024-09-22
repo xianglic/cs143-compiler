@@ -50,8 +50,18 @@ extern YYSTYPE cool_yylval;
  */
 
 DARROW          =>
+DIGIT           [0-9]+
 
 %%
+
+ /*
+  *   Integers
+  */
+
+<DIGIT> {
+  yylval.symbol = inttable.add_string(yytext);
+  return INT_CONST;
+}
 
  /*
   *  Nested comments
