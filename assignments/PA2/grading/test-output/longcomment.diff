@@ -1,0 +1,43 @@
+3c3,15
+< TYPEID Comment
+---
+> *#3 ERROR "Unmatched *)"
+> *#4 TYPEID Comment
+> LONGERROR
+> *#5 ERROR "Unmatched *)"
+> ********#6 ERROR "Unmatched *)"
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> *********************************#14 OBJECTID omment
+5c17,27
+< TYPEID Foo
+---
+> *#22 ERROR "Unmatched *)"
+> *#25 TYPEID Comment
+> LONGERROR
+> *******#31 ERROR "Unmatched *)"
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> LONGERROR
+> **********************#46 TYPEID Foo
+7,13c29,30
+< TYPEID Moo
+< OBJECTID bow
+< TYPEID JoJo
+< TYPEID JojOj
+< OBJECTID joJoj323
+< OBJECTID dfdj
+< OBJECTID fadsjfkldsafjklsd
+---
+> OBJECTID fdj
+> OBJECTID adsjfkldsafjklsd
+15d31
+< OBJECTID dfdsajfk312

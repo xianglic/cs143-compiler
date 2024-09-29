@@ -1,0 +1,32 @@
+#name "./longcomment.cool"
+#1 TYPEID Comment
+#1 OBJECTID test
+*#3 ERROR "Unmatched *)"
+*#4 TYPEID Comment
+#4 ERROR "Unmatched *)"
+*#5 ERROR "Unmatched *)"
+********#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+#6 ERROR "Unmatched *)"
+*********************************#14 OBJECTID omment
+#15 OBJECTID test
+*#22 ERROR "Unmatched *)"
+*#25 TYPEID Comment
+#26 ERROR "Unmatched *)"
+*******#31 ERROR "Unmatched *)"
+#32 ERROR "Unmatched *)"
+#32 ERROR "Unmatched *)"
+#32 ERROR "Unmatched *)"
+#32 ERROR "Unmatched *)"
+#32 ERROR "Unmatched *)"
+#33 ERROR "Unmatched *)"
+**********************#46 TYPEID Foo
+#46 OBJECTID bar
+#46 OBJECTID fdj
+#46 OBJECTID adsjfkldsafjklsd
+#46 ';'

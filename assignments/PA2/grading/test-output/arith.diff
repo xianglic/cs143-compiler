@@ -1,0 +1,294 @@
+1c1
+< CLASS
+---
+> ***#7 CLASS
+47d46
+< OBJECTID self
+63,85d61
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+< OBJECTID x
+< ASSIGN
+< OBJECTID num1
+< '+'
+< OBJECTID num2
+< ';'
+< '('
+< NEW
+< TYPEID B
+< ')'
+< '.'
+< OBJECTID set_var
+< '('
+< OBJECTID x
+< ')'
+< ';'
+100,111d75
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+< OBJECTID x
+< ASSIGN
+< '~'
+< OBJECTID num
+< ';'
+< '('
+138,148d101
+< IF
+< OBJECTID num2
+< '<'
+< OBJECTID num1
+< THEN
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+275,297d227
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+< OBJECTID x
+< ASSIGN
+< OBJECTID num
+< '*'
+< OBJECTID num
+< ';'
+< '('
+< NEW
+< TYPEID E
+< ')'
+< '.'
+< OBJECTID set_var
+< '('
+< OBJECTID x
+< ')'
+< ';'
+318,324d247
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+353,377d275
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+< OBJECTID x
+< ASSIGN
+< OBJECTID num
+< '*'
+< OBJECTID num
+< '*'
+< OBJECTID num
+< ';'
+< '('
+< NEW
+< TYPEID E
+< ')'
+< '.'
+< OBJECTID set_var
+< '('
+< OBJECTID x
+< ')'
+< ';'
+398,405d295
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< ASSIGN
+< OBJECTID num
+< IN
+467,473d356
+< '('
+< LET
+< OBJECTID x
+< ':'
+< TYPEID Int
+< IN
+< '{'
+685,696c568,618
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< '}'
+< ';'
+---
+> '*'
+> OBJECTID a2i
+> OBJECTID converts
+> OBJECTID an
+> TYPEID ASCII
+> OBJECTID string
+> OBJECTID into
+> OBJECTID an
+> OBJECTID integer
+> '.'
+> TYPEID The
+> OBJECTID empty
+> OBJECTID string
+> OBJECTID is
+> OBJECTID converted
+> OBJECTID to
+> INT_CONST 0
+> '.'
+> TYPEID Signed
+> OBJECTID and
+> OBJECTID unsigned
+> OBJECTID strings
+> OBJECTID are
+> OBJECTID handled
+> '.'
+> TYPEID The
+> OBJECTID method
+> OBJECTID aborts
+> IF
+> OBJECTID the
+> OBJECTID string
+> OBJECTID does
+> NOT
+> OBJECTID represent
+> OBJECTID an
+> OBJECTID integer
+> '.'
+> TYPEID Very
+> OBJECTID long
+> OBJECTID strings
+> OF
+> OBJECTID digits
+> OBJECTID produce
+> OBJECTID strange
+> OBJECTID answers
+> OBJECTID because
+> OF
+> OBJECTID arithmetic
+> OBJECTID overflow
+> '.'
+> LONGERROR
+1459,1478d1380
+< CASE
+< OBJECTID avar
+< OF
+< OBJECTID c
+< ':'
+< TYPEID C
+< DARROW
+< OBJECTID avar
+< ASSIGN
+< OBJECTID c
+< '.'
+< OBJECTID method6
+< '('
+< OBJECTID c
+< '.'
+< OBJECTID value
+< '('
+< ')'
+< ')'
+< ';'
+1521d1422
+< '{'
+1609,1631d1509
+< STR_CONST "f"
+< THEN
+< OBJECTID avar
+< ASSIGN
+< '('
+< NEW
+< TYPEID C
+< ')'
+< '@'
+< TYPEID C
+< '.'
+< OBJECTID method5
+< '('
+< OBJECTID avar
+< '.'
+< OBJECTID value
+< '('
+< ')'
+< ')'
+< ELSE
+< IF
+< OBJECTID char
+< '='
+1634,1649d1511
+< IF
+< '('
+< '('
+< NEW
+< TYPEID D
+< ')'
+< '.'
+< OBJECTID method7
+< '('
+< OBJECTID avar
+< '.'
+< OBJECTID value
+< '('
+< ')'
+< ')'
+< ')'
+1669,1684d1530
+< '{'
+< OBJECTID out_string
+< '('
+< STR_CONST "number "
+< ')'
+< ';'
+< OBJECTID print
+< '('
+< OBJECTID avar
+< ')'
+< ';'
+< OBJECTID out_string
+< '('
+< STR_CONST "is not divisible by 3.\n"
+< ')'
+< ';'
+1794,1796d1639
+< '}'
+< ')'
+< ';'
+1803d1645
+< ELSE
+1840,1850d1681
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< ';'

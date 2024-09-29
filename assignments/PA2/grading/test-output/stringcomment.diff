@@ -1,0 +1,4 @@
+2c2
+< STR_CONST "(* not a comment *)"
+---
+> LONGERROR

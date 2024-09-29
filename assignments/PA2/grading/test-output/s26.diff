@@ -1,0 +1,4 @@
+1c1
+< INT_CONST 3
+---
+> *#3 INT_CONST 3

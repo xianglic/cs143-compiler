@@ -1,0 +1,36 @@
+16,28c16,18
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< INT_CONST 23432
+< ERROR "_"
+< ERROR "_"
+< OBJECTID fedfj
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< INT_CONST 3232
+---
+> ___#14 INT_CONST 23432
+> __#15 OBJECTID fedfj
+> _____#16 INT_CONST 3232
+45,57c35,37
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< INT_CONST 23432
+< ERROR "_"
+< ERROR "_"
+< OBJECTID fedfj
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< ERROR "_"
+< INT_CONST 3232
+---
+> ___#18 INT_CONST 23432
+> __#18 OBJECTID fedfj
+> _____#18 INT_CONST 3232

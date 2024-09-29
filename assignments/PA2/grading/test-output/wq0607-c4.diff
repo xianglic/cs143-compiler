@@ -1,0 +1,13 @@
+4,5d3
+< STR_CONST "\\"
+< STR_CONST "\"--\""
+7d4
+< '-'
+11,15c8
+< STR_CONST "--\\"
+< LONGERROR
+< STR_CONST "\\"
+< STR_CONST "\\"
+< STR_CONST "\"--\""
+---
+> STR_CONST "--\""

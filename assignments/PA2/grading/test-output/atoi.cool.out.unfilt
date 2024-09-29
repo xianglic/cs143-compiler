@@ -1,0 +1,500 @@
+#name "./atoi.cool"
+#13 CLASS
+#13 TYPEID A2I
+#13 '{'
+#15 OBJECTID c2i
+#15 '('
+#15 OBJECTID char
+#15 ':'
+#15 TYPEID String
+#15 ')'
+#15 ':'
+#15 TYPEID Int
+#15 '{'
+#16 IF
+#16 OBJECTID char
+#16 '='
+#16 STR_CONST "0"
+#16 THEN
+#16 INT_CONST 0
+#16 ELSE
+#17 IF
+#17 OBJECTID char
+#17 '='
+#17 STR_CONST "1"
+#17 THEN
+#17 INT_CONST 1
+#17 ELSE
+#18 IF
+#18 OBJECTID char
+#18 '='
+#18 STR_CONST "2"
+#18 THEN
+#18 INT_CONST 2
+#18 ELSE
+#19 IF
+#19 OBJECTID char
+#19 '='
+#19 STR_CONST "3"
+#19 THEN
+#19 INT_CONST 3
+#19 ELSE
+#20 IF
+#20 OBJECTID char
+#20 '='
+#20 STR_CONST "4"
+#20 THEN
+#20 INT_CONST 4
+#20 ELSE
+#21 IF
+#21 OBJECTID char
+#21 '='
+#21 STR_CONST "5"
+#21 THEN
+#21 INT_CONST 5
+#21 ELSE
+#22 IF
+#22 OBJECTID char
+#22 '='
+#22 STR_CONST "6"
+#22 THEN
+#22 INT_CONST 6
+#22 ELSE
+#23 IF
+#23 OBJECTID char
+#23 '='
+#23 STR_CONST "7"
+#23 THEN
+#23 INT_CONST 7
+#23 ELSE
+#24 IF
+#24 OBJECTID char
+#24 '='
+#24 STR_CONST "8"
+#24 THEN
+#24 INT_CONST 8
+#24 ELSE
+#25 IF
+#25 OBJECTID char
+#25 '='
+#25 STR_CONST "9"
+#25 THEN
+#25 INT_CONST 9
+#25 ELSE
+#26 '{'
+#26 OBJECTID abort
+#26 '('
+#26 ')'
+#26 ';'
+#26 INT_CONST 0
+#26 ';'
+#26 '}'
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#26 FI
+#27 '}'
+#27 ';'
+#32 OBJECTID i2c
+#32 '('
+#32 OBJECTID i
+#32 ':'
+#32 TYPEID Int
+#32 ')'
+#32 ':'
+#32 TYPEID String
+#32 '{'
+#33 IF
+#33 OBJECTID i
+#33 '='
+#33 INT_CONST 0
+#33 THEN
+#33 STR_CONST "0"
+#33 ELSE
+#34 IF
+#34 OBJECTID i
+#34 '='
+#34 INT_CONST 1
+#34 THEN
+#34 STR_CONST "1"
+#34 ELSE
+#35 IF
+#35 OBJECTID i
+#35 '='
+#35 INT_CONST 2
+#35 THEN
+#35 STR_CONST "2"
+#35 ELSE
+#36 IF
+#36 OBJECTID i
+#36 '='
+#36 INT_CONST 3
+#36 THEN
+#36 STR_CONST "3"
+#36 ELSE
+#37 IF
+#37 OBJECTID i
+#37 '='
+#37 INT_CONST 4
+#37 THEN
+#37 STR_CONST "4"
+#37 ELSE
+#38 IF
+#38 OBJECTID i
+#38 '='
+#38 INT_CONST 5
+#38 THEN
+#38 STR_CONST "5"
+#38 ELSE
+#39 IF
+#39 OBJECTID i
+#39 '='
+#39 INT_CONST 6
+#39 THEN
+#39 STR_CONST "6"
+#39 ELSE
+#40 IF
+#40 OBJECTID i
+#40 '='
+#40 INT_CONST 7
+#40 THEN
+#40 STR_CONST "7"
+#40 ELSE
+#41 IF
+#41 OBJECTID i
+#41 '='
+#41 INT_CONST 8
+#41 THEN
+#41 STR_CONST "8"
+#41 ELSE
+#42 IF
+#42 OBJECTID i
+#42 '='
+#42 INT_CONST 9
+#42 THEN
+#42 STR_CONST "9"
+#42 ELSE
+#43 '{'
+#43 OBJECTID abort
+#43 '('
+#43 ')'
+#43 ';'
+#43 STR_CONST ""
+#43 ';'
+#43 '}'
+#43 '*'
+#44 OBJECTID a2i
+#44 OBJECTID converts
+#44 OBJECTID an
+#44 TYPEID ASCII
+#44 OBJECTID string
+#44 OBJECTID into
+#44 OBJECTID an
+#44 OBJECTID integer
+#44 '.'
+#44 TYPEID The
+#44 OBJECTID empty
+#44 OBJECTID string
+#45 OBJECTID is
+#45 OBJECTID converted
+#45 OBJECTID to
+#45 INT_CONST 0
+#45 '.'
+#45 TYPEID Signed
+#45 OBJECTID and
+#45 OBJECTID unsigned
+#45 OBJECTID strings
+#45 OBJECTID are
+#45 OBJECTID handled
+#45 '.'
+#45 TYPEID The
+#46 OBJECTID method
+#46 OBJECTID aborts
+#46 IF
+#46 OBJECTID the
+#46 OBJECTID string
+#46 OBJECTID does
+#46 NOT
+#46 OBJECTID represent
+#46 OBJECTID an
+#46 OBJECTID integer
+#46 '.'
+#46 TYPEID Very
+#47 OBJECTID long
+#47 OBJECTID strings
+#47 OF
+#47 OBJECTID digits
+#47 OBJECTID produce
+#47 OBJECTID strange
+#47 OBJECTID answers
+#47 OBJECTID because
+#47 OF
+#47 OBJECTID arithmetic
+#48 OBJECTID overflow
+#48 '.'
+#50 ERROR "Unmatched *)"
+#51 OBJECTID a2i
+#51 '('
+#51 OBJECTID s
+#51 ':'
+#51 TYPEID String
+#51 ')'
+#51 ':'
+#51 TYPEID Int
+#51 '{'
+#52 IF
+#52 OBJECTID s
+#52 '.'
+#52 OBJECTID length
+#52 '('
+#52 ')'
+#52 '='
+#52 INT_CONST 0
+#52 THEN
+#52 INT_CONST 0
+#52 ELSE
+#53 IF
+#53 OBJECTID s
+#53 '.'
+#53 OBJECTID substr
+#53 '('
+#53 INT_CONST 0
+#53 ','
+#53 INT_CONST 1
+#53 ')'
+#53 '='
+#53 STR_CONST "-"
+#53 THEN
+#53 '~'
+#53 OBJECTID a2i_aux
+#53 '('
+#53 OBJECTID s
+#53 '.'
+#53 OBJECTID substr
+#53 '('
+#53 INT_CONST 1
+#53 ','
+#53 OBJECTID s
+#53 '.'
+#53 OBJECTID length
+#53 '('
+#53 ')'
+#53 '-'
+#53 INT_CONST 1
+#53 ')'
+#53 ')'
+#53 ELSE
+#54 IF
+#54 OBJECTID s
+#54 '.'
+#54 OBJECTID substr
+#54 '('
+#54 INT_CONST 0
+#54 ','
+#54 INT_CONST 1
+#54 ')'
+#54 '='
+#54 STR_CONST "+"
+#54 THEN
+#54 OBJECTID a2i_aux
+#54 '('
+#54 OBJECTID s
+#54 '.'
+#54 OBJECTID substr
+#54 '('
+#54 INT_CONST 1
+#54 ','
+#54 OBJECTID s
+#54 '.'
+#54 OBJECTID length
+#54 '('
+#54 ')'
+#54 '-'
+#54 INT_CONST 1
+#54 ')'
+#54 ')'
+#54 ELSE
+#55 OBJECTID a2i_aux
+#55 '('
+#55 OBJECTID s
+#55 ')'
+#56 FI
+#56 FI
+#56 FI
+#57 '}'
+#57 ';'
+#63 OBJECTID a2i_aux
+#63 '('
+#63 OBJECTID s
+#63 ':'
+#63 TYPEID String
+#63 ')'
+#63 ':'
+#63 TYPEID Int
+#63 '{'
+#64 '('
+#64 LET
+#64 OBJECTID int
+#64 ':'
+#64 TYPEID Int
+#64 ASSIGN
+#64 INT_CONST 0
+#64 IN
+#65 '{'
+#66 '('
+#66 LET
+#66 OBJECTID j
+#66 ':'
+#66 TYPEID Int
+#66 ASSIGN
+#66 OBJECTID s
+#66 '.'
+#66 OBJECTID length
+#66 '('
+#66 ')'
+#66 IN
+#67 '('
+#67 LET
+#67 OBJECTID i
+#67 ':'
+#67 TYPEID Int
+#67 ASSIGN
+#67 INT_CONST 0
+#67 IN
+#68 WHILE
+#68 OBJECTID i
+#68 '<'
+#68 OBJECTID j
+#68 LOOP
+#69 '{'
+#70 OBJECTID int
+#70 ASSIGN
+#70 OBJECTID int
+#70 '*'
+#70 INT_CONST 10
+#70 '+'
+#70 OBJECTID c2i
+#70 '('
+#70 OBJECTID s
+#70 '.'
+#70 OBJECTID substr
+#70 '('
+#70 OBJECTID i
+#70 ','
+#70 INT_CONST 1
+#70 ')'
+#70 ')'
+#70 ';'
+#71 OBJECTID i
+#71 ASSIGN
+#71 OBJECTID i
+#71 '+'
+#71 INT_CONST 1
+#71 ';'
+#72 '}'
+#73 POOL
+#74 ')'
+#75 ')'
+#75 ';'
+#76 OBJECTID int
+#76 ';'
+#77 '}'
+#78 ')'
+#79 '}'
+#79 ';'
+#85 OBJECTID i2a
+#85 '('
+#85 OBJECTID i
+#85 ':'
+#85 TYPEID Int
+#85 ')'
+#85 ':'
+#85 TYPEID String
+#85 '{'
+#86 IF
+#86 OBJECTID i
+#86 '='
+#86 INT_CONST 0
+#86 THEN
+#86 STR_CONST "0"
+#86 ELSE
+#87 IF
+#87 INT_CONST 0
+#87 '<'
+#87 OBJECTID i
+#87 THEN
+#87 OBJECTID i2a_aux
+#87 '('
+#87 OBJECTID i
+#87 ')'
+#87 ELSE
+#88 STR_CONST "-"
+#88 '.'
+#88 OBJECTID concat
+#88 '('
+#88 OBJECTID i2a_aux
+#88 '('
+#88 OBJECTID i
+#88 '*'
+#88 '~'
+#88 INT_CONST 1
+#88 ')'
+#88 ')'
+#89 FI
+#89 FI
+#90 '}'
+#90 ';'
+#95 OBJECTID i2a_aux
+#95 '('
+#95 OBJECTID i
+#95 ':'
+#95 TYPEID Int
+#95 ')'
+#95 ':'
+#95 TYPEID String
+#95 '{'
+#96 IF
+#96 OBJECTID i
+#96 '='
+#96 INT_CONST 0
+#96 THEN
+#96 STR_CONST ""
+#96 ELSE
+#97 '('
+#97 LET
+#97 OBJECTID next
+#97 ':'
+#97 TYPEID Int
+#97 ASSIGN
+#97 OBJECTID i
+#97 '/'
+#97 INT_CONST 10
+#97 IN
+#98 OBJECTID i2a_aux
+#98 '('
+#98 OBJECTID next
+#98 ')'
+#98 '.'
+#98 OBJECTID concat
+#98 '('
+#98 OBJECTID i2c
+#98 '('
+#98 OBJECTID i
+#98 '-'
+#98 OBJECTID next
+#98 '*'
+#98 INT_CONST 10
+#98 ')'
+#98 ')'
+#99 ')'
+#100 FI
+#101 '}'
+#101 ';'
+#103 '}'
+#103 ';'

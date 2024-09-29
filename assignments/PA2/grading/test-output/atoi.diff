@@ -1,0 +1,65 @@
+190,201c190,240
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< FI
+< '}'
+< ';'
+---
+> '*'
+> OBJECTID a2i
+> OBJECTID converts
+> OBJECTID an
+> TYPEID ASCII
+> OBJECTID string
+> OBJECTID into
+> OBJECTID an
+> OBJECTID integer
+> '.'
+> TYPEID The
+> OBJECTID empty
+> OBJECTID string
+> OBJECTID is
+> OBJECTID converted
+> OBJECTID to
+> INT_CONST 0
+> '.'
+> TYPEID Signed
+> OBJECTID and
+> OBJECTID unsigned
+> OBJECTID strings
+> OBJECTID are
+> OBJECTID handled
+> '.'
+> TYPEID The
+> OBJECTID method
+> OBJECTID aborts
+> IF
+> OBJECTID the
+> OBJECTID string
+> OBJECTID does
+> NOT
+> OBJECTID represent
+> OBJECTID an
+> OBJECTID integer
+> '.'
+> TYPEID Very
+> OBJECTID long
+> OBJECTID strings
+> OF
+> OBJECTID digits
+> OBJECTID produce
+> OBJECTID strange
+> OBJECTID answers
+> OBJECTID because
+> OF
+> OBJECTID arithmetic
+> OBJECTID overflow
+> '.'
+> LONGERROR

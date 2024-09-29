@@ -1,0 +1,13 @@
+ERROR "!"
+ERROR "#"
+ERROR "$"
+ERROR "%"
+ERROR "^"
+ERROR "&"
+_#1 ERROR ">"
+ERROR "?"
+ERROR "`"
+ERROR "["
+ERROR "]"
+LONGERROR
+ERROR "|"

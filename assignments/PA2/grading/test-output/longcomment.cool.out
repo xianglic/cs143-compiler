@@ -1,0 +1,31 @@
+TYPEID Comment
+OBJECTID test
+*#3 ERROR "Unmatched *)"
+*#4 TYPEID Comment
+LONGERROR
+*#5 ERROR "Unmatched *)"
+********#6 ERROR "Unmatched *)"
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+*********************************#14 OBJECTID omment
+OBJECTID test
+*#22 ERROR "Unmatched *)"
+*#25 TYPEID Comment
+LONGERROR
+*******#31 ERROR "Unmatched *)"
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+LONGERROR
+**********************#46 TYPEID Foo
+OBJECTID bar
+OBJECTID fdj
+OBJECTID adsjfkldsafjklsd
+';'
