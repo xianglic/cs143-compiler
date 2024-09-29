@@ -1,12 +1,3 @@
-/*
- *  The scanner definition for COOL.
- */
-
-/*
- *  Stuff enclosed in %{ %} in the first section is copied verbatim to the
- *  output, so headers and global definitions are placed here to be visible
- * to the code in the file.  Don't remove anything that was here initially
- */
 %{
 #include <cool-parse.h>
 #include <stringtab.h>
@@ -22,10 +13,6 @@
 
 extern FILE *fin; /* we read from this file */
 
-/* define YY_INPUT so we read from the FILE fin:
- * This change makes it possible to use this scanner in
- * the Cool compiler.
- */
 #undef YY_INPUT
 #define YY_INPUT(buf,result,max_size) \
 	if ( (result = fread( (char*)buf, sizeof(char), max_size, fin)) < 0) \
@@ -39,98 +26,182 @@ extern int verbose_flag;
 
 extern YYSTYPE cool_yylval;
 
-/*
- *  Add Your own definitions here
- */
-
 %}
 
-/*
- * Define names for regular expressions here.
- */
+CLASS           [Cc][Ll][Aa][Ss][Ss]
+ELSE            [Ee][Ll][Ss][Ee]
+FI              [Ff][Ii]
+IF              [Ii][Ff]
+IN              [Ii][Nn]
+INHERITS        [Ii][Nn][Hh][Ee][Rr][Ii][Tt][Ss]
+ISVOID          [Ii][Ss][Vv][Oo][Ii][Dd]
+LET             [Ll][Ee][Tt]
+LOOP            [Ll][Oo][Oo][Pp]
+POOL            [Pp][Oo][Oo][Ll]
+THEN            [Tt][Hh][Ee][Nn]
+WHILE           [Ww][Hh][Ii][Ll][Ee]
+CASE            [Cc][Aa][Ss][Ee]
+ESAC            [Ee][Ss][Aa][Cc]
+NEW             [Nn][Ee][Ww]
+OF              [Oo][Ff]
+NOT             [Nn][Oo][Tt]
+TRUE            t[Rr][Uu][Ee]
+FALSE           f[Aa][Ll][Ss][Ee]
+INT             [0-9]+
+TYPEID					[A-Z][a-zA-Z0-9_]*
+OBJECTID				[a-z][a-zA-Z0-9_]*
+DARROW          =>
+LE							<=
+ASSIGN					<-
+WHITESPACE			[ \f\r\t\v]+
+NEWLINE					\n
+SYMBOLS					[+/\-*=<.~,;:()@{}]
+INVALID					[^a-zA-Z0-9_ \f\r\t\v\n+/\-*=<.~,;:()@{}]
+%x COMMENT
+%x INLINE_COMMENT
+%x STRING
 
-DIGIT           [0-9]+
-STRING          \"([^"\\\n]|\\[btnfr"'\\])*\"
-WHITESPACE      [ \t\n\r\f\v]+ 
 %%
-/*
-* Keywords are case-insensitive except for the values true and false,
-* which must begin with a lower-case letter.
-*/
 
-/* Keywords */
-[Cc][Ll][Aa][Ss][Ss]       { return CLASS; }
-[Ee][Ll][Ss][Ee]           { return ELSE; }
-[Ff][Ii]                   { return FI; }
-[Ii][Ff]                   { return IF; }
-[Ii][Nn]                   { return IN; }
-[Ii][Nn][Hh][Ee][Rr][Ii][Tt][Ss] { return INHERITS; }
-[Ll][Ee][Tt]               { return LET; }
-[Ll][Oo][Oo][Pp]           { return LOOP; }
-[Pp][Oo][Oo][Ll]           { return POOL; }
-[Tt][Hh][Ee][Nn]           { return THEN; }
-[Ww][Hh][Ii][Ll][Ee]       { return WHILE; }
-[Cc][Aa][Ss][Ee]           { return CASE; }
-[Ee][Ss][Aa][Cc]           { return ESAC; }
-[Oo][Ff]                   { return OF; }
-[Nn][Ee][Ww]               { return NEW; }
-[Ii][Ss][Vv][Oo][Ii][Dd]   { return ISVOID; }
-=>		                     { return DARROW; }
-=                          { return ASSIGN; }
-<=                         { return LE; }
+ /* Operatotr */
+{DARROW}		{ return (DARROW); }
+{LE}				{ return (LE); }
+{ASSIGN}		{ return (ASSIGN); }
+{WHITESPACE}	{}
+{NEWLINE}		{ curr_lineno++; }
+{SYMBOLS} 	{ return int(yytext[0]); }
 
+ /* Keyword */
+ /*
+  * Keywords are -insensitive except for the values true and false,
+  * which must begin with a lower- letter.
+  */
+{CLASS}			{ return (CLASS); }
+{ELSE}			{ return (ELSE); }
+{FI}				{ return (FI); }
+{IF}				{ return (IF); }
+{IN}				{ return (IN); }
+{INHERITS}	{ return (INHERITS); }
+{ISVOID}		{ return (ISVOID); }
+{LET}				{ return (LET); }
+{LOOP}			{ return (LOOP); }
+{POOL}			{ return (POOL); }
+{THEN}			{ return (THEN); }
+{WHILE}			{ return (WHILE); }
+{CASE}			{ return (CASE); }
+{ESAC}			{ return (ESAC); }
+{NEW}				{ return (NEW); }
+{OF}				{ return (OF); }
+{NOT}				{ return (NOT); }
+{TRUE} {
+	cool_yylval.boolean = true;
+	return BOOL_CONST;
+}
+{FALSE} {
+	cool_yylval.boolean = false;
+	return BOOL_CONST;
+}
+{TYPEID} {
+	cool_yylval.symbol = idtable.add_string(yytext);
+	return (TYPEID);
+}
+{OBJECTID} {
+	cool_yylval.symbol = idtable.add_string(yytext);
+	return (OBJECTID);
+}
 
-/* Constants */
-/ *
+  /* Constant */
+  /* Int */
+{INT} {
+	cool_yylval.symbol = inttable.add_string(yytext);
+	return INT_CONST;
+}
+ /* String */
+ /*
   *  String constants (C syntax)
-  *  Escape sequence \c is accepted for all characters c. Except for 
+  *  Escape sequence \c is accepted for all characters c. Except for
   *  \n \t \b \f, the result is c.
   *
   */
-<STRING> { 
-  if (strchr(yytext, '\0') == NULL) {  /* Check if \0 is present in the string */
-    yylval.symbol = stringtable.add_string(yytext);
-    return STR_CONST;
-  }
-  yyerror("String contains invalid null character.");
+\" {
+	string_buf_ptr = string_buf;
+	BEGIN(STRING);
 }
-
-<DIGIT> { 
-  yylval.symbol = inttable.add_string(yytext);
-  return INT_CONST;
+<STRING>\"	{
+	BEGIN(INITIAL);
+	*string_buf_ptr = '\0';
+	cool_yylval.symbol = stringtable.add_string(string_buf);
+	return STR_CONST;
 }
-
-/* Boolean Constants */
-"true"([a-zA-Z]*) { 
-  yylval.boolean = 1;
-  return BOOL_CONST;
+<STRING>\n {
+	curr_lineno++;
+	BEGIN(INITIAL);
+	cool_yylval.error_msg = "Unterminated string constant";
+	return ERROR;
 }
-
-"false"([a-zA-Z]*) { 
-  yylval.boolean = 0;
-  return BOOL_CONST;
+<STRING>\0 {
+	BEGIN(INITIAL);
+	cool_yylval.error_msg = "String contains null character";
+	return ERROR;
 }
-
-/* Identifiers */
-
-[A-Z][A-Za-z0-9_]* {
-  return TYPEID;
+<STRING><<EOF>> {
+	BEGIN(INITIAL);
+	cool_yylval.error_msg = "EOF in string constant";
+	return ERROR;
 }
-
-[a-z][A-Za-z0-9_]* {
-  return OBJECTID;
+<STRING>\\n  {
+	if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+		BEGIN(INITIAL);
+		cool_yylval.error_msg = "String constant too long";
+		return ERROR;
+	}
+	*string_buf_ptr++ = '\n';
 }
-
-
- /*
-  *  Nested comments
-  */
-
-
-/* White space */
-<WHITESPACE> {}
-
-
-.            { return ERROR; }  // Matches any character that isn't otherwise recognized
-
+<STRING>\\t  {
+	if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+		BEGIN(INITIAL);
+		cool_yylval.error_msg = "String constant too long";
+		return ERROR;
+	}
+	*string_buf_ptr++ = '\t';
+}
+<STRING>\\b  {
+	if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+		BEGIN(INITIAL);
+		cool_yylval.error_msg = "String constant too long";
+		return ERROR;
+	}
+	*string_buf_ptr++ = '\b';
+}
+<STRING>\\f  {
+	if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+		BEGIN(INITIAL);
+		cool_yylval.error_msg = "String constant too long";
+		return ERROR;
+	}
+	*string_buf_ptr++ = '\f';
+}
+<STRING>\\(.|\n)	{
+	if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+		BEGIN(INITIAL);
+		cool_yylval.error_msg = "String constant too long";
+		return ERROR;
+	}
+	*string_buf_ptr++ = yytext[1];
+}
+<STRING>[^\\\n\"]+ {
+	char *yptr = yytext;
+	while ( *yptr ) {
+		if ((string_buf_ptr - 1) == &string_buf[MAX_STR_CONST-1]) {
+			BEGIN(INITIAL);
+			cool_yylval.error_msg = "String constant too long";
+			return ERROR;
+		}
+		*string_buf_ptr++ = *yptr++;
+	}
+}
+{INVALID} {
+	cool_yylval.error_msg = yytext;
+	return ERROR;
+}
 %%
