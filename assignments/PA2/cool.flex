@@ -26,6 +26,8 @@ extern int verbose_flag;
 
 extern YYSTYPE cool_yylval;
 
+int comment_level = 0;
+
 %}
 
 CLASS           [Cc][Ll][Aa][Ss][Ss]
@@ -62,6 +64,61 @@ INVALID					[^a-zA-Z0-9_ \f\r\t\v\n+/\-*=<.~,;:()@{}]
 %x STRING
 
 %%
+ /* Comment */
+
+ /* Line comments: -- until newline or EOF */
+"--" {
+    /* Skip everything until a newline or EOF */
+    while (yyinput() != '\n' && yyinput() != EOF) {
+        /* Do nothing, just consume the characters */
+    }
+    /* Increment line number if a newline was consumed */
+    if (yyinput() == '\n') {
+        curr_lineno++;
+    }
+}
+
+ /* Block comments: (* ... *) with support for nesting */
+"(*" {
+    BEGIN(COMMENT);  /* Enter the COMMENT state */
+    comment_level = 1;  /* Initialize nesting level */
+}
+
+ /* In the COMMENT state, handle nested block comments */
+<COMMENT>"(*" {
+    comment_level++;  /* Increase nesting level */
+}
+
+ /* Handle the closing of a block comment */
+<COMMENT>"*)" {
+    if (--comment_level == 0) {
+        BEGIN(INITIAL);  /* Return to the normal state */
+    }
+}
+
+ /* Handle newlines inside comments to update line numbers */
+<COMMENT>\n {
+    curr_lineno++;  /* Increment line number */
+}
+
+
+ /* Handle EOF inside a block comment (error case) */
+<COMMENT><<EOF>> {
+	BEGIN(INITIAL);
+    cool_yylval.error_msg = "EOF in comment";
+    return ERROR;
+}
+
+ /* Handle extra *) */
+"*)" {
+    cool_yylval.error_msg = "Unmatched *)";
+    return ERROR;
+}
+
+ /* Handle all other characters inside block comments */
+<COMMENT>[^*\n]+ {
+    /* Do nothing, just consume the characters */
+}
 
  /* Operatotr */
 {DARROW}		{ return (DARROW); }
@@ -204,4 +261,8 @@ INVALID					[^a-zA-Z0-9_ \f\r\t\v\n+/\-*=<.~,;:()@{}]
 	cool_yylval.error_msg = yytext;
 	return ERROR;
 }
+
+
+
+
 %%
