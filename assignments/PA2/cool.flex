@@ -49,42 +49,88 @@ extern YYSTYPE cool_yylval;
  * Define names for regular expressions here.
  */
 
-DARROW          =>
 DIGIT           [0-9]+
-
+STRING          \"([^"\\\n]|\\[btnfr"'\\])*\"
+WHITESPACE      [ \t\n\r\f\v]+ 
 %%
+/*
+* Keywords are case-insensitive except for the values true and false,
+* which must begin with a lower-case letter.
+*/
 
- /*
-  *   Integers
+/* Keywords */
+[Cc][Ll][Aa][Ss][Ss]       { return CLASS; }
+[Ee][Ll][Ss][Ee]           { return ELSE; }
+[Ff][Ii]                   { return FI; }
+[Ii][Ff]                   { return IF; }
+[Ii][Nn]                   { return IN; }
+[Ii][Nn][Hh][Ee][Rr][Ii][Tt][Ss] { return INHERITS; }
+[Ll][Ee][Tt]               { return LET; }
+[Ll][Oo][Oo][Pp]           { return LOOP; }
+[Pp][Oo][Oo][Ll]           { return POOL; }
+[Tt][Hh][Ee][Nn]           { return THEN; }
+[Ww][Hh][Ii][Ll][Ee]       { return WHILE; }
+[Cc][Aa][Ss][Ee]           { return CASE; }
+[Ee][Ss][Aa][Cc]           { return ESAC; }
+[Oo][Ff]                   { return OF; }
+[Nn][Ee][Ww]               { return NEW; }
+[Ii][Ss][Vv][Oo][Ii][Dd]   { return ISVOID; }
+=>		                     { return DARROW; }
+=                          { return ASSIGN; }
+<=                         { return LE; }
+
+
+/* Constants */
+/ *
+  *  String constants (C syntax)
+  *  Escape sequence \c is accepted for all characters c. Except for 
+  *  \n \t \b \f, the result is c.
+  *
   */
+<STRING> { 
+  if (strchr(yytext, '\0') == NULL) {  /* Check if \0 is present in the string */
+    yylval.symbol = stringtable.add_string(yytext);
+    return STR_CONST;
+  }
+  yyerror("String contains invalid null character.");
+}
 
-<DIGIT> {
+<DIGIT> { 
   yylval.symbol = inttable.add_string(yytext);
   return INT_CONST;
 }
+
+/* Boolean Constants */
+"true"([a-zA-Z]*) { 
+  yylval.boolean = 1;
+  return BOOL_CONST;
+}
+
+"false"([a-zA-Z]*) { 
+  yylval.boolean = 0;
+  return BOOL_CONST;
+}
+
+/* Identifiers */
+
+[A-Z][A-Za-z0-9_]* {
+  return TYPEID;
+}
+
+[a-z][A-Za-z0-9_]* {
+  return OBJECTID;
+}
+
 
  /*
   *  Nested comments
   */
 
 
- /*
-  *  The multiple-character operators.
-  */
-{DARROW}		{ return (DARROW); }
-
- /*
-  * Keywords are case-insensitive except for the values true and false,
-  * which must begin with a lower-case letter.
-  */
+/* White space */
+<WHITESPACE> {}
 
 
- /*
-  *  String constants (C syntax)
-  *  Escape sequence \c is accepted for all characters c. Except for 
-  *  \n \t \b \f, the result is c.
-  *
-  */
-
+.            { return ERROR; }  // Matches any character that isn't otherwise recognized
 
 %%
